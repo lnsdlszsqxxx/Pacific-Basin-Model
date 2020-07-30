@@ -696,15 +696,17 @@ c-----------------------------------------------------------------------
           ANUu(nz,3)=0.0
           ANUv(nz,3)=0.0
           AKAP(nz,3)=0.0
-#if ( defined CRAY )
-          call SGTSL(nz,ANUu(1,1),ANUu(1,2),ANUu(1,3),BU,ierrU)
-          call SGTSL(nz,ANUv(1,1),ANUv(1,2),ANUv(1,3),BV,ierrV)
-          call SGTSL(nz,AKAP(1,1),AKAP(1,2),AKAP(1,3),BT,ierrT)
-#else
+!#if ( defined CRAY )
+!          call SGTSL(nz,ANUu(1,1),ANUu(1,2),ANUu(1,3),BU,ierrU)
+!          call SGTSL(nz,ANUv(1,1),ANUv(1,2),ANUv(1,3),BV,ierrV)
+!          call SGTSL(nz,AKAP(1,1),AKAP(1,2),AKAP(1,3),BT,ierrT)
+!#else
+          !Solve a tridiagonal linear system.
+          !http://www.lahey.com/docs/lfpro78help/slatec/DGTSL.htm
           call DGTSL(nz,ANUu(1,1),ANUu(1,2),ANUu(1,3),BU,ierrU)
           call DGTSL(nz,ANUv(1,1),ANUv(1,2),ANUv(1,3),BV,ierrV)
           call DGTSL(nz,AKAP(1,1),AKAP(1,2),AKAP(1,3),BT,ierrT)
-#endif
+!#endif
           do k=1,nz
              U(i,j,k)=BU(k)
              V(i,j,k)=BV(k)

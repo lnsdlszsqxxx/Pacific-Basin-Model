@@ -23,6 +23,8 @@ $ ./configure --prefix=/home/username/local
 $ make check install
 ```
 
+Check netcdf.inc is under /home/username/local/include. Change the INCLDIR in Macros.C90/Macros.J90 accordingly.
+
 ## Download the Model
 - Download source code from [here](http://www.cesm.ucar.edu/models/ocn-pac/)
 - the user's manual is [here](http://www.cesm.ucar.edu/models/ocn-pac/pac3.e/doc0.html)

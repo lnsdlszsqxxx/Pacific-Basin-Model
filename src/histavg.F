@@ -66,8 +66,8 @@ c-----------------------------------------------------------------------
             i=index(mss_fn,' ')-1
             j=index(loc_fn,' ')-1
             write(*,9004) ier,loc_fn(1:j),mss_fn(1:i)
-            if ( old_fn(1:4) .ne. "null" ) call system('rm '//old_fn)
-            if ( mss_rmlf    .ne. 0      ) old_fn = loc_fn
+            if ( old_fn(1:4) .ne. "null") call systemcall('rm '//old_fn)
+            if ( mss_rmlf    .ne. 0     ) old_fn = loc_fn
           end if
         end if
         call time_avg("zero")

@@ -7,13 +7,12 @@
 #=======================================================================
 
 INCLDIR  = -I . -I /usr/local/include
-SLIBS    =                     -l c,m,f,sci,p   \
-           -L /usr/local/lib   -l ncarm,ncaro,netcdf,mss
-MLIBS    = -L /fs/cgd/csm/lib/C90         -l MPI
+SLIBS    = -L /usr/local/lib -L /usr/local/gfortran/lib  -libnetcdf.a
+MLIBS    = 
 CPPDEFS  = -DCRAY -DMSS
 CPPFLAGS = -V -N -P -C
 CPP      = cpp $(CPPFLAGS) $(INCLDIR) $(CPPDEFS)
 FFLAGS   = -o $@
 FC       = gfortran -c $(FFLAGS) $(INCLDIR)
-LDFLAGS  = -Wl"-V -f indef" 
+LDFLAGS  = -Wl
 LDR      = gfortran    $(LDFLAGS)

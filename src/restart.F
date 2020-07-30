@@ -78,7 +78,7 @@ c-----------------------------------------------------------------------
             write(*,9000) 'IC data file specified by pointer file'
             if (rest_pfile(1:9).ne.'rpointer ') then
               i = index(rest_pfile,' ')-1
-              call system(  'cp '//rest_pfile(1:i)//' rpointer')
+              call systemcall('cp '//rest_pfile(1:i)//' rpointer')
               write(*,9000) 'cp '//rest_pfile(1:i)//' rpointer'
             end if
             open (tmpunit,file='rpointer',form='formatted')
@@ -138,7 +138,7 @@ c-----------------------------------------------------------------------
 
          IF (rest_now .ne. 0) THEN
             !--- remove previous file ---
-            IF ( file_exists ) call system('rm '//loc_fn(1:14))
+            IF ( file_exists ) call systemcall('rm '//loc_fn(1:14))
             !--- create a new file name ---
             !oc_fn='123456789+1 '
             loc_fn='ryyyy-mm-dd '
@@ -179,7 +179,7 @@ c-----------------------------------------------------------------------
               close(tmpunit)
               if (rest_pfile(1:9).ne.'rpointer ') then
                 i = index(rest_pfile,' ')-1
-                call system(  'cp -f rpointer '//rest_pfile(1:i))
+                call systemcall('cp -f rpointer '//rest_pfile(1:i))
                 write(*,9000) 'cp -f rpointer '//rest_pfile(1:i)
               end if
             ELSE

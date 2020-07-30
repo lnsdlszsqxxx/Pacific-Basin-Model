@@ -33,7 +33,7 @@ c-----------------------------------------------------------------------
       END
 
 c=======================================================================
-
+!liang
       subroutine datetime(cdate,ctime)
 
       !--- arguments ---
@@ -44,44 +44,30 @@ c=======================================================================
       integer mon,day,yr      ! calendar date
       integer hr,min,sec      ! time of day
       integer iarray(3)       ! time of day temporary for SGI
+      character*10 temptime    ! Current time
 
 c-----------------------------------------------------------------------
 c PURPOSE: returns real world date & time strings
 c-----------------------------------------------------------------------
 
-#if   ( defined CRAY )
-      write(cdate,'(a8)') date()
-      write(ctime,'(a8)') clock()
-#endif
-#if ( defined SGI )
-      call idate(mon,day,yr)
-      yr = mod(yr,100)
-      call itime(iarray)
-      hr  = iarray(1)
-      min = iarray(2)
-      sec = iarray(3)
-      write(cdate,'(i2.2,a1,i2.2,a1,i2.2)') mon,'/',day,'/',yr
-      write(ctime,'(i2.2,a1,i2.2,a1,i2.2)') hr ,':',min,':',sec
-#endif
-#if ( defined SX4 )
-      call datim(cdate,ctime)
-#endif
-#if ( !defined CRAY && !defined SGI && !defined SX4 )
-      error wrt cpp: must define CRAY, SGI, or SX4
-#endif
+      call date_and_time(DATE=cdate,TIME=temptime) !cdate is yyyymmdd
+                                                   !temptime is
+                                                   !hhmmss.ms
+      ctime(1:6)=temptime(1:6) !hhmmss
+      ctime(7:8)=temptime(8:9) !millisecond
 
+      write(*,*) "(datetime) ", cdate,", ",ctime
       return
       end
 
 c=======================================================================
-#if ( defined CRAY )
-
-      SUBROUTINE system(str)
+!liang
+      SUBROUTINE systemcall(str)
 
       IMPLICIT none
 
       !----- arguments ---
-      character*(*) str
+      character*(*) str !command to be run
 
       !----- external routines -----
       integer      ier         ! function return error code
@@ -89,19 +75,17 @@ c=======================================================================
       external     ishell
 
 c-----------------------------------------------------------------------
-c PURPOSE: make a system call
+c PURPOSE: make a system call (invoke the system command)
 c-----------------------------------------------------------------------
 
-      ier=ishell(str)
-      if (ier.ne.0) write(*,*) '(system) ierr=',ier,' for ',str
+      ier=system(str)
+      if (ier.ne.0) write(*,*) '(systemcall) ierr=',ier,' for ',str
 
       RETURN
       END
 
-#endif
 c=======================================================================
-#if ( !defined CRAY && !defined SGI )
-
+!liang
       integer FUNCTION irtc()
 
 c-----------------------------------------------------------------------
@@ -113,9 +97,8 @@ c-----------------------------------------------------------------------
       RETURN
       END
 
-#endif
 c=======================================================================
-#if (!defined MSS)
+!liang
 
       SUBROUTINE MSwrite (ier,loc_fn,mss_fn,mss_pass,mss_rtpd,mss_opts)
 
@@ -133,14 +116,13 @@ c PURPOSE: a stand-in for NCAR's MSS routine
 c-----------------------------------------------------------------------
 
       ier=0
-      call system('cp '//loc_fn//' '//mss_fn)
+      call systemcall('cp '//loc_fn//' '//mss_fn)
 
       RETURN
       END
 
-#endif
 c=======================================================================
-#if (!defined MSS)
+!liang
 
       SUBROUTINE MSread  (ier,loc_fn,mss_fn,mss_pass,mss_opts)
 
@@ -157,10 +139,9 @@ c PURPOSE: a stand-in for NCAR's MSS routine
 c-----------------------------------------------------------------------
 
       ier=0
-      call system('cp '//mss_fn//' '//loc_fn)
+      call systemcall('cp '//mss_fn//' '//loc_fn)
 
       RETURN
       END
 
-#endif
 c=======================================================================

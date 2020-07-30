@@ -33,7 +33,7 @@ c-----------------------------------------------------------------------
 
       IF ( hist_now .eq. 0 ) RETURN
 
-      if ( file_exists .and. mss_rmlf.ne.0 ) call system('rm '//loc_fn)
+      if(file_exists .and. mss_rmlf.ne.0) call systemcall('rm '//loc_fn)
 
       !oc_fn='123456789+1234567.nc '
       loc_fn='hyyyy-mm-dd.sssss.nc '
