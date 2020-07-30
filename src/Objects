@@ -1,0 +1,14 @@
+OBJS =  calendar.o     \
+        control.o     \
+        diagnos.o     \
+        domain.o     \
+        filter.o     \
+        force.o     \
+        histavg.o     \
+        history.o     \
+        initial.o     \
+        integrate.o     \
+        kpp_coef.o     \
+        main.o     \
+        misc.o     \
+        restart.o  

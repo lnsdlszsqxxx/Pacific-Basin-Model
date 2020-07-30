@@ -1,0 +1,19 @@
+#=======================================================================
+# CVS $Id: Macros.C90,v 1.1 1998/08/21 22:54:02 kauff Exp $
+# CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/Macros.C90,v $
+# CVS $Name: pac3_e $
+#=======================================================================
+# Makefile macros for a Cray C90 at NCAR
+#=======================================================================
+
+INCLDIR  = -I . -I /fs/cgd/csm/include -I /usr/local/include
+SLIBS    =                     -l c,m,f,sci,p   \
+           -L /usr/local/lib   -l ncarm,ncaro,netcdf,mss
+MLIBS    = -L /fs/cgd/csm/lib/C90         -l MPI
+CPPDEFS  = -DCRAY -DMSS
+CPPFLAGS = -V -N -P -C
+CPP      = cpp $(CPPFLAGS) $(INCLDIR) $(CPPDEFS)
+FFLAGS   = -O task1 -V
+FC       = gfortran -c $(FFLAGS) $(INCLDIR)
+LDFLAGS  = -Wl"-V -f indef" 
+LDR      = gfortran    $(LDFLAGS)

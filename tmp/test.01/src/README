@@ -1,0 +1,13 @@
+c=======================================================================
+c CVS $Id: README,v 1.2 1998/08/24 21:36:27 kauff Exp $
+c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/README,v $
+c CVS $Name: pac3_e $
+c=======================================================================
+
+               pac3  --  NCAR/CSM Pacific Basin Model
+                      Version 3.x (dd mm yyyy) 
+
+This NCAR/CSM Pacific basin model is based on the upper equatorial model
+of Gent and Cane (1989).  See http://www.cgd.ucar.edu/csm for more info.
+
+

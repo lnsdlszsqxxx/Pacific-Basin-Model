@@ -1,0 +1,166 @@
+#!/usr/local/bin/perl
+
+#=======================================================================
+# CVS $Id: Makedep,v 1.1 1998/08/21 22:54:03 kauff Exp $
+# CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/Makedep,v $
+# CVS $Name: pac3_e $
+#=======================================================================
+# Take a list of files and for each file generate a line of code 
+# containing its dependencies in a form suitable for inclusion into a 
+# make file.  Write output to STDOUT.
+#-----------------------------------------------------------------------
+
+if ( @ARGV != 2 ) {
+  print "Usage: Makedep PATHS SOURCE\n";
+  print "       where PATHS is the name of a file containing the search\n";
+  print "       paths (one per line) and SOURCE is the name of a file\n";
+  print "       containing the names of files (one per line) for which\n";
+  print "       dependencies will be generated.\n";
+  exit;
+}
+
+open(FILEPATH,$ARGV[0]) || die "Can't open $ARGV[0]: $!\n";
+open(SRCFILES,$ARGV[1]) || die "Can't open $ARGV[1]: $!\n";
+
+# Make list of paths to use when looking for files.  Remove newline characters.
+# Prepend "." so search starts in current directory.  This default is for
+# consistency with the way GNU Make searches for dependencies.
+
+@paths = <FILEPATH>;
+chop @paths;
+unshift(@paths,'.');
+foreach $dir (@paths) {
+  $dir = `/bin/csh -cf "glob $dir"`;     # Expand tildes in path names.
+}
+
+# Make list of files containing source code.
+
+@src = <SRCFILES>;
+chop @src;
+
+# Write dependencies formatted for inclusion into a make file to STDOUT.
+
+FILE:
+foreach $file ( @src ) {
+
+  local( $list, $x, $y, $head, @dep, @miss );
+
+  @dep = (); # make @dep the null list
+
+  @list = &dependents( $file );
+
+  # Check the list for non-found dependencies and
+  # $list[0] == -1  => souce code file was not found, else
+  # $list[i] == -1  => dependancy $list[i-1] was not found
+
+  LIST_MEMBER:
+  for ( $i = 0; $i <= $#list; ++$i ) {
+    $x = $list[$i];
+    if ( $x == -1 ) { 
+      if ( $i == 0 ) {
+        print STDERR "(Makedep) $file not found\n";
+        next FILE;
+      } else {
+        next LIST_MEMBER;  # dependency $list[i-1] was not found
+      }
+    }
+    if ( $i < $#list && $list[$i+1] == -1 ) {
+       # this dependency was not found, add to missing dependency list
+       foreach $y ( @miss ) {
+          if ( $x eq $y ) { 
+             next LIST_MEMBER;
+          }
+       }
+       push( @miss, $x );
+    } else {
+       # don't add redundant dependacies to makefile's dependency list
+       foreach $y ( @dep ) {
+          if ( $x eq $y ) { 
+             next LIST_MEMBER;
+          }
+       }
+       push( @dep, $x );
+    } 
+  }
+
+  if ( 0 <= $#miss ) {
+    print STDERR "(Makedep) FYI: dependencies missing/omitted for $file: ";
+    print STDERR "@miss \n";
+  }
+
+  # format the dependacy list for inclusion in makefile.
+
+  $file =~ /\s*(\w[^.]*)/;
+  $head = "$1.o";  # The form of $head is determined by how the
+                   # archive members are specified in the makefile.
+
+  print "$head : $file @dep\n";
+
+}
+
+#=======================================================================
+
+sub dependents {
+
+  local( $file ) = @_;
+  local( @out, $fh );
+
+#-----------------------------------------------------------------------
+# Search for Fortran or cpp include, strip filename when found, append
+# the file to the output array, descend into that file, and continue 
+# the search.
+#-----------------------------------------------------------------------
+
+  # file not found
+  if ( ! ($absname = &findsrc( $file )) ) {
+     return -1 ;
+  }
+
+  # file found, 
+
+  # make a unique filehandle
+  $fh = $file . 'FH';
+  $fh =~ tr/a-z/A-Z/;
+  open( $fh, $absname );
+  while ( <$fh> ) {
+    #f ( /^[ \t]+include\s+['"](.*)['"]/i ) {
+    if ( /^#include\s+[<"'](.*)[>"']/ ) {
+      push( @out, $1 );
+      push( @out, &dependents( $1 ) );
+    }
+  }
+  close( $fh );
+
+  return @out;
+}
+
+#=======================================================================
+
+sub findsrc {
+
+  local( $file ) = @_;
+  local( $dir, $fname );
+
+#-----------------------------------------------------------------------
+# Search for the specified file in the list of directories in the global
+# array @path.  Return the first occurance found, or the null string if
+# the file is not found.
+#-----------------------------------------------------------------------
+
+  foreach $dir (@paths) {
+
+    if( $dir =~ m#/$# ) {           # allow directory name to end with /
+      $fname = $dir . $file;
+    } else {
+      $fname = $dir . '/' . $file;
+    }
+
+    if ( -e  $fname ) {
+      return $fname;
+    }
+
+  }
+  return '';  # file not found
+}
+
+#=======================================================================

@@ -1,0 +1,155 @@
+Build log 
+Date: Tue Jul 28 09:28:54 CST 2020 
+Dir : /Users/liangyu/pac3.e/tmp/test.01/src 
+User: liangyu 
+---------------------------------
+---------------------------------
+o gathering src code from /Users/liangyu/pac3.e/src
+c=======================================================================
+c CVS $Id: README,v 1.2 1998/08/24 21:36:27 kauff Exp $
+c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/README,v $
+c CVS $Name: pac3_e $
+c=======================================================================
+
+               pac3  --  NCAR/CSM Pacific Basin Model
+                      Version 3.x (dd mm yyyy) 
+
+This NCAR/CSM Pacific basin model is based on the upper equatorial model
+of Gent and Cane (1989).  See http://www.cgd.ucar.edu/csm for more info.
+
+
+total 640
+-rw-r--r--  1 liangyu  staff    737 Jul 25 21:24 Depends
+-rw-r--r--  1 liangyu  staff      2 Jul 25 21:24 Filepath
+-rw-rw-r--@ 1 liangyu  staff    855 Jul 27 17:09 Macros.C90
+-rw-rw-r--@ 1 liangyu  staff    845 Aug 22  1998 Macros.J90
+-rwxrwxr-x@ 1 liangyu  staff   4693 Aug 22  1998 Makedep*
+-rw-rw-r--@ 1 liangyu  staff   1179 Jul 28 09:18 Makefile
+-rwxrwxr-x@ 1 liangyu  staff   1185 Aug 22  1998 Makeobj*
+-rwxrwxr-x@ 1 liangyu  staff    820 Jul 25 21:26 Makeprep*
+-rw-r--r--  1 liangyu  staff    326 Jul 25 21:24 Objects
+-rw-rw-r--@ 1 liangyu  staff    541 Aug 25  1998 README
+-rw-r--r--  1 liangyu  staff    134 Jul 25 21:24 Source
+-rw-rw-r--@ 1 liangyu  staff   7807 Aug 25  1998 calendar.F
+-rw-rw-r--@ 1 liangyu  staff   2305 Apr 18  1997 constant.h
+-rw-rw-r--@ 1 liangyu  staff  13811 Aug 25  1998 control.F
+-rw-rw-r--@ 1 liangyu  staff   6281 Aug 28  1998 control.h
+-rw-rw-r--@ 1 liangyu  staff   3390 Apr 18  1997 data.h
+-rw-rw-r--@ 1 liangyu  staff  11945 Aug 25  1998 diagnos.F
+-rw-rw-r--@ 1 liangyu  staff    857 Apr 18  1997 dims.h
+-rw-rw-r--@ 1 liangyu  staff   7226 Aug 25  1998 domain.F
+-rw-rw-r--@ 1 liangyu  staff   1309 Apr 18  1997 domain.h
+-rw-rw-r--@ 1 liangyu  staff  19108 Aug 25  1998 filter.F
+-rw-rw-r--@ 1 liangyu  staff  18169 Aug 25  1998 force.F
+-rw-rw-r--@ 1 liangyu  staff  21366 Aug 26  1998 histavg.F
+-rw-rw-r--@ 1 liangyu  staff   1252 Apr 18  1997 histavg.h
+-rw-rw-r--@ 1 liangyu  staff  16518 Aug 28  1998 history.F
+-rw-rw-r--@ 1 liangyu  staff   9305 Aug 26  1998 initial.F
+-rw-rw-r--@ 1 liangyu  staff  29565 Aug 27  1998 integrate.F
+-rw-rw-r--@ 1 liangyu  staff  37000 Aug 13  1999 kpp_coef.F
+-rw-rw-r--@ 1 liangyu  staff   8970 Aug 29  1998 main.F
+-rw-rw-r--@ 1 liangyu  staff   4576 Aug 26  1998 misc.F
+-rw-rw-r--@ 1 liangyu  staff   8566 Aug 26  1998 restart.F
+---------------------------------
+calling Makeprep-----------------
+makeobj haha
+makedep haha
+(Makedep) FYI: dependencies missing/omitted for histavg.F: netcdf.inc 
+(Makedep) FYI: dependencies missing/omitted for history.F: netcdf.inc 
+makeprep done haha
+calling Make---------------------
+cpp -V -N -P -C -I . -I /fs/cgd/csm/include -I /usr/local/include -DCRAY -DMSS control.F > control.f  ;  gfortran -c -O task1 -V -I . -I /fs/cgd/csm/include -I /usr/local/include control.f  ;  mv -f  control.f control.i
+clang: error: unsupported option '-V -N'
+clang: error: no such file or directory: 'c'
+clang: warning: .: 'linker' input unused [-Wunused-command-line-argument]
+gfortran: error: task1: No such file or directory
+gfortran: error: unrecognized command line option ‘-V’
+cpp -V -N -P -C -I . -I /fs/cgd/csm/include -I /usr/local/include -DCRAY -DMSS diagnos.F > diagnos.f  ;  gfortran -c -O task1 -V -I . -I /fs/cgd/csm/include -I /usr/local/include diagnos.f  ;  mv -f  diagnos.f diagnos.i
+clang: error: unsupported option '-V -N'
+clang: error: no such file or directory: 'c'
+clang: warning: .: 'linker' input unused [-Wunused-command-line-argument]
+gfortran: error: task1: No such file or directory
+gfortran: error: unrecognized command line option ‘-V’
+cpp -V -N -P -C -I . -I /fs/cgd/csm/include -I /usr/local/include -DCRAY -DMSS domain.F > domain.f  ;  gfortran -c -O task1 -V -I . -I /fs/cgd/csm/include -I /usr/local/include domain.f  ;  mv -f  domain.f domain.i
+clang: error: unsupported option '-V -N'
+clang: error: no such file or directory: 'c'
+clang: warning: .: 'linker' input unused [-Wunused-command-line-argument]
+gfortran: error: task1: No such file or directory
+gfortran: error: unrecognized command line option ‘-V’
+cpp -V -N -P -C -I . -I /fs/cgd/csm/include -I /usr/local/include -DCRAY -DMSS filter.F > filter.f  ;  gfortran -c -O task1 -V -I . -I /fs/cgd/csm/include -I /usr/local/include filter.f  ;  mv -f  filter.f filter.i
+clang: error: unsupported option '-V -N'
+clang: error: no such file or directory: 'c'
+clang: warning: .: 'linker' input unused [-Wunused-command-line-argument]
+gfortran: error: task1: No such file or directory
+gfortran: error: unrecognized command line option ‘-V’
+cpp -V -N -P -C -I . -I /fs/cgd/csm/include -I /usr/local/include -DCRAY -DMSS force.F > force.f  ;  gfortran -c -O task1 -V -I . -I /fs/cgd/csm/include -I /usr/local/include force.f  ;  mv -f  force.f force.i
+clang: error: unsupported option '-V -N'
+clang: error: no such file or directory: 'c'
+clang: warning: .: 'linker' input unused [-Wunused-command-line-argument]
+gfortran: error: task1: No such file or directory
+gfortran: error: unrecognized command line option ‘-V’
+cpp -V -N -P -C -I . -I /fs/cgd/csm/include -I /usr/local/include -DCRAY -DMSS histavg.F > histavg.f  ;  gfortran -c -O task1 -V -I . -I /fs/cgd/csm/include -I /usr/local/include histavg.f  ;  mv -f  histavg.f histavg.i
+clang: error: unsupported option '-V -N'
+clang: error: no such file or directory: 'c'
+clang: warning: .: 'linker' input unused [-Wunused-command-line-argument]
+gfortran: error: task1: No such file or directory
+gfortran: error: unrecognized command line option ‘-V’
+cpp -V -N -P -C -I . -I /fs/cgd/csm/include -I /usr/local/include -DCRAY -DMSS history.F > history.f  ;  gfortran -c -O task1 -V -I . -I /fs/cgd/csm/include -I /usr/local/include history.f  ;  mv -f  history.f history.i
+clang: error: unsupported option '-V -N'
+clang: error: no such file or directory: 'c'
+clang: warning: .: 'linker' input unused [-Wunused-command-line-argument]
+gfortran: error: task1: No such file or directory
+gfortran: error: unrecognized command line option ‘-V’
+cpp -V -N -P -C -I . -I /fs/cgd/csm/include -I /usr/local/include -DCRAY -DMSS initial.F > initial.f  ;  gfortran -c -O task1 -V -I . -I /fs/cgd/csm/include -I /usr/local/include initial.f  ;  mv -f  initial.f initial.i
+clang: error: unsupported option '-V -N'
+clang: error: no such file or directory: 'c'
+clang: warning: .: 'linker' input unused [-Wunused-command-line-argument]
+gfortran: error: task1: No such file or directory
+gfortran: error: unrecognized command line option ‘-V’
+cpp -V -N -P -C -I . -I /fs/cgd/csm/include -I /usr/local/include -DCRAY -DMSS integrate.F > integrate.f  ;  gfortran -c -O task1 -V -I . -I /fs/cgd/csm/include -I /usr/local/include integrate.f  ;  mv -f  integrate.f integrate.i
+clang: error: unsupported option '-V -N'
+clang: error: no such file or directory: 'c'
+clang: warning: .: 'linker' input unused [-Wunused-command-line-argument]
+gfortran: error: task1: No such file or directory
+gfortran: error: unrecognized command line option ‘-V’
+cpp -V -N -P -C -I . -I /fs/cgd/csm/include -I /usr/local/include -DCRAY -DMSS kpp_coef.F > kpp_coef.f  ;  gfortran -c -O task1 -V -I . -I /fs/cgd/csm/include -I /usr/local/include kpp_coef.f  ;  mv -f  kpp_coef.f kpp_coef.i
+clang: error: unsupported option '-V -N'
+clang: error: no such file or directory: 'c'
+clang: warning: .: 'linker' input unused [-Wunused-command-line-argument]
+gfortran: error: task1: No such file or directory
+gfortran: error: unrecognized command line option ‘-V’
+cpp -V -N -P -C -I . -I /fs/cgd/csm/include -I /usr/local/include -DCRAY -DMSS main.F > main.f  ;  gfortran -c -O task1 -V -I . -I /fs/cgd/csm/include -I /usr/local/include main.f  ;  mv -f  main.f main.i
+clang: error: unsupported option '-V -N'
+clang: error: no such file or directory: 'c'
+clang: warning: .: 'linker' input unused [-Wunused-command-line-argument]
+gfortran: error: task1: No such file or directory
+gfortran: error: unrecognized command line option ‘-V’
+cpp -V -N -P -C -I . -I /fs/cgd/csm/include -I /usr/local/include -DCRAY -DMSS misc.F > misc.f  ;  gfortran -c -O task1 -V -I . -I /fs/cgd/csm/include -I /usr/local/include misc.f  ;  mv -f  misc.f misc.i
+clang: error: unsupported option '-V -N'
+clang: error: no such file or directory: 'c'
+clang: warning: .: 'linker' input unused [-Wunused-command-line-argument]
+gfortran: error: task1: No such file or directory
+gfortran: error: unrecognized command line option ‘-V’
+cpp -V -N -P -C -I . -I /fs/cgd/csm/include -I /usr/local/include -DCRAY -DMSS restart.F > restart.f  ;  gfortran -c -O task1 -V -I . -I /fs/cgd/csm/include -I /usr/local/include restart.f  ;  mv -f  restart.f restart.i
+clang: error: unsupported option '-V -N'
+clang: error: no such file or directory: 'c'
+clang: warning: .: 'linker' input unused [-Wunused-command-line-argument]
+gfortran: error: task1: No such file or directory
+gfortran: error: unrecognized command line option ‘-V’
+gfortran    -Wl"-V -f indef"  -o pac3 calendar.o control.o diagnos.o domain.o filter.o force.o histavg.o history.o initial.o integrate.o kpp_coef.o main.o misc.o restart.o   -l c,m,f,sci,p -L /usr/local/lib   -l ncarm,ncaro,netcdf,mss -L /fs/cgd/csm/lib/C90         -l MPI
+gfortran: error: calendar.o: No such file or directory
+gfortran: error: control.o: No such file or directory
+gfortran: error: diagnos.o: No such file or directory
+gfortran: error: domain.o: No such file or directory
+gfortran: error: filter.o: No such file or directory
+gfortran: error: force.o: No such file or directory
+gfortran: error: histavg.o: No such file or directory
+gfortran: error: history.o: No such file or directory
+gfortran: error: initial.o: No such file or directory
+gfortran: error: integrate.o: No such file or directory
+gfortran: error: kpp_coef.o: No such file or directory
+gfortran: error: main.o: No such file or directory
+gfortran: error: misc.o: No such file or directory
+gfortran: error: restart.o: No such file or directory
+gfortran: error: unrecognized command line option ‘-Wl-V -f indef’
+make: *** [pac3] Error 1

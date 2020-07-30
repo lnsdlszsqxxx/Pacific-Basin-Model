@@ -1,0 +1,110 @@
+#=======================================================================
+# CVS $Id: test.01.nqs,v 1.2 1998/08/28 22:48:46 kauff Exp $
+# CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/test.01.nqs,v $
+# CVS $Name: pac3_e $
+#=======================================================================
+#  This is a CSM Pacific Basin Model NQS batch job script
+#=======================================================================
+
+#-----------------------------------------------------------------------
+# (a) Set NQS options
+#-----------------------------------------------------------------------
+#  SUB -A  12345678                  # select GUA charge account
+# QSUB -s  /bin/csh                  # select shell script
+# QSUB -q   prem                     # select queue
+# QSUB -lT  5:01:00 -lt  5:00:00     # set time limits
+# QSUB -lM  8.00Mw                   # set memory limits
+# QSUB -mb -me -eo                   # combine stdout & stderr
+# QSUB                               # no more qsub options
+
+
+echo '-----------------------------------------------------------------'
+echo ' (b) Set env variables available to model setup script           '
+echo '-----------------------------------------------------------------'
+set MSSNAME = `echo $LOGNAME | tr '[a-z]' '[A-Z]'`
+
+setenv CASE     test.01                # case name
+setenv CASESTR  'code test'            # short descriptive text string
+setenv RUNTYPE  initial                # run type
+setenv ARCH     C90                    # machine: C90,J90,SGI,O2K,SX4
+setenv MSS      TRUE                   # MSS is available?
+setenv MSSDIR   /$MSSNAME/pac3/$CASE   # MSS directory path name
+setenv MSSRPD   20                     # MSS file retention period
+setenv MSSPWD   $LOGNAME               # MSS file password
+setenv RPTDIR   $HOME                  # where restart pointer file goes
+
+
+echo '-----------------------------------------------------------------'
+echo ' (c) Specify input & output (stdout & stderr) directories.       '
+echo '-----------------------------------------------------------------'
+
+set EXEDIR = ~/pac3.e/tmp/$CASE
+set NQSDIR = ~/pac3.e/nqs/$CASE
+set LOGDIR = $NQSDIR
+
+echo '-----------------------------------------------------------------'
+echo ' (d) Prepare model for execution                                 '
+echo '-----------------------------------------------------------------'
+
+set LID = "`date +%y%m%d-%H%M%S`"      # a unique log file ID
+
+mkdir -p $EXEDIR
+mkdir -p $NQSDIR #liang
+cp pac3.setup.csh $NQSDIR #liang
+cp $CASE.nqs $NQSDIR #liang, for resubmit
+
+cd $EXEDIR
+echo "Date: `date`"     >&! pac3.log.$LID
+$NQSDIR/pac3.setup.csh  >>! pac3.log.$LID #invoke pac3.setup.csh
+
+if ($status != 0) then
+  echo  Setup script error, see:    pac3.log.$LID
+  exit  99
+endif
+
+echo '-----------------------------------------------------------------'
+echo ' (e) Execute model                                               '
+echo '-----------------------------------------------------------------'
+
+cd  $EXEDIR 
+date
+if ($ARCH == 'C90' || $ARCH == 'J90') ja        $TMPDIR/jacct
+ocn < ocn.parm >>&  pac3.log.$LID
+if ($ARCH == 'C90' || $ARCH == 'J90') ja -ts    $TMPDIR/jacct
+
+echo '-----------------------------------------------------------------'
+echo ' (f) save model output (stdout & stderr) to $LOGDIR              '
+echo '-----------------------------------------------------------------'
+
+ls -alFt
+set echo
+gzip  pac3.log.$LID
+cp -p pac3.log.$LID*  $LOGDIR
+unset echo
+
+echo '-----------------------------------------------------------------'
+echo ' (g) Resubmit another NQS script $CASE.nqs??                     '
+echo '-----------------------------------------------------------------'
+
+cd $NQSDIR
+set RESUBMIT = 'FALSE'
+if ( -e RESUBMIT ) then
+  @ N = `cat RESUBMIT`
+  echo "file RESUBMIT exits and requests $N more job submissions"
+  if ( $N > 0 ) then
+    set RESUBMIT = 'TRUE'
+    @ N--
+    echo $N >! RESUBMIT
+  endif
+endif
+
+if ( $RESUBMIT == 'TRUE' ) then
+  echo "Note: resubmitting NQS script $CASE.nqs"
+  qsub $CASE.nqs
+else
+  echo 'Note: not resubmitting an NQS script'
+endif
+
+echo '================================================================='
+echo ' end of nqs shell script                                         '
+echo '================================================================='

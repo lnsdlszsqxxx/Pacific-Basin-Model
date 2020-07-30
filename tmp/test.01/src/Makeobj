@@ -1,0 +1,51 @@
+#!/usr/local/bin/perl
+
+#=======================================================================
+# CVS $Id: Makeobj,v 1.1 1998/08/21 22:54:04 kauff Exp $
+# CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/Makeobj,v $
+# CVS $Name: pac3_e $
+#=======================================================================
+# Take a list of .f & .F files and make a list of .o files
+# suitable for inclusion into a makefile
+#-----------------------------------------------------------------------
+
+if ( @ARGV != 1 ) {
+  print "Usage: Makeobj SOURCE\n";
+  print "       where file SOURCE contains a list of .f or .F src ";
+  print        "file, one per line \n";
+  exit;
+}
+
+open(SRCFILES,$ARGV[0]) || die "Can't open $ARGV[0]: $!\n";
+
+@src = <SRCFILES>;
+chop @src;
+
+
+# Write an object file list into a makefile to STDOUT.
+
+FILE:
+for ($i = 0 ; $i <= $#src ; ++$i ) {
+
+  if ( $i == 0 ) {
+     print "OBJS = ";
+  }
+  else {
+     print "       ";
+  }
+
+  $file = $src[$i];
+  $file =~ /\s*(\w[^.]*)/;
+  $objf = "$1.o";
+  print " $objf ";
+
+  if ( $i != $#src ) {
+     print "    \\\n";
+  }
+  else {
+     print      " \n";
+  }
+
+}
+
+#=======================================================================

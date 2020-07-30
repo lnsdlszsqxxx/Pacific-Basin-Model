@@ -1,0 +1,5 @@
+
+The files contained here contain the code modifications necessary
+for the NCAR CSM Pacific Basin Model, pac3, to be used as the ocean
+component in a CSM configuration.
+
