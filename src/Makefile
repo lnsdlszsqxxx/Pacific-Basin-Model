@@ -28,7 +28,7 @@ $(EXEC): $(OBJS)
 	$(LDR) -o $(EXEC) $(OBJS) $(SLIBS) $(MLIBS)
 
 .F.o:
-	$(FC) $*.f
+	$(FC) -c $*.F 
 
 clean:
 	rm -f $(OBJS) *.i $(EXEC)

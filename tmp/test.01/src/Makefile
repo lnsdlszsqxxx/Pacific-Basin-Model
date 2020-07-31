@@ -17,8 +17,7 @@ EXEC = a.out
 
 include Objects
 
-ARCH = C90
-include Macros.$(ARCH)
+include Macros.liang
 
 .SUFFIXES:
 .SUFFIXES: .F .o
@@ -29,8 +28,7 @@ $(EXEC): $(OBJS)
 	$(LDR) -o $(EXEC) $(OBJS) $(SLIBS) $(MLIBS)
 
 .F.o:
-	$(CPP) $< > $*.f  ;  $(FC) $*.f  ;  mv -f  $*.f $*.i
-#  $(FC) $*.f  ;  mv -f  $*.f $*.i
+	$(FC) -c $*.F 
 
 clean:
 	rm -f $(OBJS) *.i $(EXEC)

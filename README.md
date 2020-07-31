@@ -3,8 +3,13 @@
 ## My laptop version
 - MacBook Pro 10.15.5
 
-## Pre-install
+## Download the Model
+- Download source code from [here](http://www.cesm.ucar.edu/models/ocn-pac/)
+- the user's manual is [here](http://www.cesm.ucar.edu/models/ocn-pac/pac3.e/doc0.html)
+
+## Pre-installation
 - a fortran compiler (I use gfortran)
+- download a source file named [dgtsl.F](http://www.netlib.no/netlib/linpack/dgtsl.f), which solves a tridiagonal linear system and is invoked by integrate.F. Put it together with other source code files.
 - [netCDF-C library](https://www.unidata.ucar.edu/downloads/netcdf/)
 - [netCDF-Fortran library](https://www.unidata.ucar.edu/downloads/netcdf/)
 
@@ -25,10 +30,6 @@ $ make check install
 
 Check netcdf.inc is under /home/username/local/include. Change the INCLDIR in Macros.C90/Macros.J90 accordingly.
 
-## Download the Model
-- Download source code from [here](http://www.cesm.ucar.edu/models/ocn-pac/)
-- the user's manual is [here](http://www.cesm.ucar.edu/models/ocn-pac/pac3.e/doc0.html)
-
 ## Debug and modify the code
 This model was run on NCAR CRAY server. There are some machine specific code and configurations, such as Mass Storage System (MSS), MSread/MSwrite, and keyword CRAY in the code. Modify the Macros.C90 or Macros.J90 file. Modify the Makefile. Also, debug the source code as well.
 
@@ -36,3 +37,5 @@ In my own model (the model I modify and run on my laptop), some folders are crea
 ```
 ~/pac3.e/csh -f test.01.nqs
 ```
+
+In Macros file, '-L' gives the lib location, and '-l' gives the name of the lib file. For example, when '-l netcdff' is given, the compiler will look for a lib file named libnetcdff.a in the folder given by '-L'. 'a' stands for archive, which means that this is a static lib. Note that the lib file name is libnetcdff.a not libnetcdf.a, otherwise the compiler cann't find the netcdf related subroutines.

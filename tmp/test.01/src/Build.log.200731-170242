@@ -1,0 +1,111 @@
+Build log 
+Date: Fri Jul 31 17:02:42 CST 2020 
+Dir : /Users/liangyu/pac3.e/tmp/test.01/src 
+User: liangyu 
+---------------------------------
+---------------------------------
+o gathering src code from /Users/liangyu/pac3.e/src
+c=======================================================================
+c CVS $Id: README,v 1.2 1998/08/24 21:36:27 kauff Exp $
+c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/README,v $
+c CVS $Name: pac3_e $
+c=======================================================================
+
+               pac3  --  NCAR/CSM Pacific Basin Model
+                      Version 3.x (dd mm yyyy) 
+
+This NCAR/CSM Pacific basin model is based on the upper equatorial model
+of Gent and Cane (1989).  See http://www.cgd.ucar.edu/csm for more info.
+
+
+total 28232
+-rw-r--r--  1 liangyu  staff       737 Jul 30 08:33 Depends
+-rw-r--r--  1 liangyu  staff         2 Jul 30 08:33 Filepath
+-rw-r--r--@ 1 liangyu  staff       855 Jul 30 08:33 Macros.C90
+-rw-r--r--@ 1 liangyu  staff       845 Jul 30 08:33 Macros.J90
+-rw-r--r--@ 1 liangyu  staff       744 Jul 30 18:57 Macros.liang
+-rwxr-xr-x@ 1 liangyu  staff      4693 Jul 30 08:33 Makedep*
+-rw-r--r--@ 1 liangyu  staff      1093 Jul 31 16:38 Makefile
+-rwxr-xr-x@ 1 liangyu  staff      1185 Jul 30 08:33 Makeobj*
+-rwxr-xr-x@ 1 liangyu  staff       754 Jul 30 08:33 Makeprep*
+-rw-r--r--  1 liangyu  staff       326 Jul 30 08:33 Objects
+-rw-r--r--@ 1 liangyu  staff       541 Jul 30 08:33 README
+-rw-r--r--  1 liangyu  staff       134 Jul 30 08:33 Source
+-rw-r--r--@ 1 liangyu  staff      7807 Jul 30 08:33 calendar.F
+-rw-r--r--  1 liangyu  staff      3632 Jul 31 16:59 calendar.o
+-rw-r--r--@ 1 liangyu  staff      2305 Jul 30 08:33 constant.h
+-rw-r--r--@ 1 liangyu  staff     13816 Jul 30 08:33 control.F
+-rw-r--r--@ 1 liangyu  staff      6279 Jul 30 08:33 control.h
+-rw-r--r--  1 liangyu  staff     16908 Jul 31 16:59 control.o
+-rw-r--r--@ 1 liangyu  staff      3390 Jul 30 08:33 data.h
+-rw-r--r--@ 1 liangyu  staff     11995 Jul 30 08:33 diagnos.F
+-rw-r--r--  1 liangyu  staff     18288 Jul 31 16:59 diagnos.o
+-rw-r--r--@ 1 liangyu  staff       857 Jul 30 08:33 dims.h
+-rw-r--r--@ 1 liangyu  staff      7246 Jul 30 08:33 domain.F
+-rw-r--r--@ 1 liangyu  staff      1309 Jul 30 08:33 domain.h
+-rw-r--r--  1 liangyu  staff     10920 Jul 31 16:59 domain.o
+-rw-r--r--@ 1 liangyu  staff     19178 Jul 30 08:33 filter.F
+-rw-r--r--  1 liangyu  staff     17904 Jul 31 16:59 filter.o
+-rw-r--r--@ 1 liangyu  staff     18244 Jul 30 08:33 force.F
+-rw-r--r--  1 liangyu  staff     27608 Jul 31 16:59 force.o
+-rw-r--r--@ 1 liangyu  staff     21433 Jul 30 16:42 histavg.F
+-rw-r--r--@ 1 liangyu  staff      1252 Jul 30 08:33 histavg.h
+-rw-r--r--  1 liangyu  staff     31616 Jul 31 16:59 histavg.o
+-rw-r--r--@ 1 liangyu  staff     16574 Jul 30 16:42 history.F
+-rw-r--r--  1 liangyu  staff     20088 Jul 31 16:59 history.o
+-rw-r--r--@ 1 liangyu  staff      9355 Jul 30 08:33 initial.F
+-rw-r--r--  1 liangyu  staff  13824068 Jul 31 16:59 initial.o
+-rw-r--r--@ 1 liangyu  staff     29848 Jul 30 17:04 integrate.F
+-rw-r--r--  1 liangyu  staff     43592 Jul 31 16:59 integrate.o
+-rw-r--r--@ 1 liangyu  staff     37000 Jul 30 08:33 kpp_coef.F
+-rw-r--r--  1 liangyu  staff     37300 Jul 31 16:59 kpp_coef.o
+-rw-r--r--@ 1 liangyu  staff      8995 Jul 30 08:33 main.F
+-rw-r--r--  1 liangyu  staff     12508 Jul 31 16:59 main.o
+-rw-r--r--@ 1 liangyu  staff      4357 Jul 30 16:50 misc.F
+-rw-r--r--  1 liangyu  staff      4100 Jul 31 16:59 misc.o
+-rw-r--r--@ 1 liangyu  staff      8599 Jul 30 16:32 restart.F
+-rw-r--r--  1 liangyu  staff     22152 Jul 31 16:59 restart.o
+---------------------------------
+calling Makeprep-----------------
+calling Make---------------------
+gfortran    -W -o pac3 calendar.o control.o diagnos.o domain.o filter.o force.o histavg.o history.o initial.o integrate.o kpp_coef.o main.o misc.o restart.o   -L /usr/local/lib -L /usr/local/gfortran/lib  -l c -l m -l netcdf 
+Undefined symbols for architecture x86_64:
+  "_dgtsl_", referenced from:
+      _drmix_ in integrate.o
+  "_ncapt_", referenced from:
+      _nc_dvar_ in history.o
+      _nc_ddim_ in history.o
+  "_ncaptc_", referenced from:
+      _nc_histavg_ in histavg.o
+      _nc_history_ in history.o
+      _nc_dvar_ in history.o
+      _nc_ddim_ in history.o
+  "_ncclos_", referenced from:
+      _nc_histavg_ in histavg.o
+      _nc_history_ in history.o
+  "_nccre_", referenced from:
+      _nc_histavg_ in histavg.o
+      _nc_history_ in history.o
+  "_ncddef_", referenced from:
+      _nc_histavg_ in histavg.o
+      _nc_history_ in history.o
+      _nc_ddim_ in history.o
+  "_ncendf_", referenced from:
+      _nc_histavg_ in histavg.o
+      _nc_history_ in history.o
+  "_ncredf_", referenced from:
+      _nc_histavg_ in histavg.o
+      _nc_history_ in history.o
+  "_ncvdef_", referenced from:
+      _nc_histavg_ in histavg.o
+      _nc_history_ in history.o
+      _nc_dvar_ in history.o
+      _nc_ddim_ in history.o
+  "_ncvid_", referenced from:
+      _nc_pvar_ in history.o
+  "_ncvpt_", referenced from:
+      _nc_pvar_ in history.o
+      _nc_pdim_ in history.o
+ld: symbol(s) not found for architecture x86_64
+collect2: error: ld returned 1 exit status
+make: *** [pac3] Error 1

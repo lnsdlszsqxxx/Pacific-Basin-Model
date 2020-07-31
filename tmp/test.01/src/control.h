@@ -94,7 +94,7 @@ c=======================================================================
       integer  mShapH,mShapU,mShapT   ! filter boundary treatment
 
       !----- global data via common block ------------------------------
-      COMMON / control /
+      COMMON /control1/
      &   rest_type   , rest_bfile , rest_pfile , 
      &   rest_freq   , rest_n     , rest_odate , rest_date  ,
      &   case_name   , case_desc  ,
@@ -115,4 +115,4 @@ c=======================================================================
      &   nShapH      ,nShapU      , nShapT     ,
      &   mShapH      ,mShapU      , mShapT      
 
-      SAVE   / control /
+      SAVE   /control1/

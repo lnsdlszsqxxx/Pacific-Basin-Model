@@ -1,0 +1,218 @@
+Build log 
+Date: Fri Jul 31 17:49:37 CST 2020 
+Dir : /Users/liangyu/pac3.e/tmp/test.01/src 
+User: liangyu 
+---------------------------------
+---------------------------------
+o gathering src code from /Users/liangyu/pac3.e/src
+c=======================================================================
+c CVS $Id: README,v 1.2 1998/08/24 21:36:27 kauff Exp $
+c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/README,v $
+c CVS $Name: pac3_e $
+c=======================================================================
+
+               pac3  --  NCAR/CSM Pacific Basin Model
+                      Version 3.x (dd mm yyyy) 
+
+This NCAR/CSM Pacific basin model is based on the upper equatorial model
+of Gent and Cane (1989).  See http://www.cgd.ucar.edu/csm for more info.
+
+
+total 28240
+-rw-r--r--  1 liangyu  staff       737 Jul 30 08:33 Depends
+-rw-r--r--  1 liangyu  staff         2 Jul 30 08:33 Filepath
+-rw-r--r--@ 1 liangyu  staff       855 Jul 30 08:33 Macros.C90
+-rw-r--r--@ 1 liangyu  staff       845 Jul 30 08:33 Macros.J90
+-rw-r--r--@ 1 liangyu  staff       743 Jul 31 17:29 Macros.liang
+-rwxr-xr-x@ 1 liangyu  staff      4693 Jul 30 08:33 Makedep*
+-rw-r--r--@ 1 liangyu  staff      1093 Jul 31 16:38 Makefile
+-rwxr-xr-x@ 1 liangyu  staff      1185 Jul 30 08:33 Makeobj*
+-rwxr-xr-x@ 1 liangyu  staff       754 Jul 30 08:33 Makeprep*
+-rw-r--r--  1 liangyu  staff       347 Jul 31 17:49 Objects
+-rw-r--r--@ 1 liangyu  staff       541 Jul 30 08:33 README
+-rw-r--r--  1 liangyu  staff       134 Jul 30 08:33 Source
+-rw-r--r--@ 1 liangyu  staff      7807 Jul 30 08:33 calendar.F
+-rw-r--r--  1 liangyu  staff      3632 Jul 31 17:46 calendar.o
+-rw-r--r--@ 1 liangyu  staff      2305 Jul 30 08:33 constant.h
+-rw-r--r--@ 1 liangyu  staff     13816 Jul 30 08:33 control.F
+-rw-r--r--@ 1 liangyu  staff      6279 Jul 30 08:33 control.h
+-rw-r--r--  1 liangyu  staff     16908 Jul 31 17:46 control.o
+-rw-r--r--@ 1 liangyu  staff      3390 Jul 30 08:33 data.h
+-rw-r--r--  1 liangyu  staff      3240 Jul 31 17:46 dgtsl.F
+-rw-r--r--@ 1 liangyu  staff     11995 Jul 30 08:33 diagnos.F
+-rw-r--r--  1 liangyu  staff     18288 Jul 31 17:46 diagnos.o
+-rw-r--r--@ 1 liangyu  staff       857 Jul 30 08:33 dims.h
+-rw-r--r--@ 1 liangyu  staff      7246 Jul 30 08:33 domain.F
+-rw-r--r--@ 1 liangyu  staff      1309 Jul 30 08:33 domain.h
+-rw-r--r--  1 liangyu  staff     10920 Jul 31 17:46 domain.o
+-rw-r--r--@ 1 liangyu  staff     19178 Jul 30 08:33 filter.F
+-rw-r--r--  1 liangyu  staff     17904 Jul 31 17:46 filter.o
+-rw-r--r--@ 1 liangyu  staff     18244 Jul 30 08:33 force.F
+-rw-r--r--  1 liangyu  staff     27608 Jul 31 17:46 force.o
+-rw-r--r--@ 1 liangyu  staff     21433 Jul 30 16:42 histavg.F
+-rw-r--r--@ 1 liangyu  staff      1252 Jul 30 08:33 histavg.h
+-rw-r--r--  1 liangyu  staff     31616 Jul 31 17:46 histavg.o
+-rw-r--r--@ 1 liangyu  staff     16574 Jul 30 16:42 history.F
+-rw-r--r--  1 liangyu  staff     20088 Jul 31 17:46 history.o
+-rw-r--r--@ 1 liangyu  staff      9355 Jul 30 08:33 initial.F
+-rw-r--r--  1 liangyu  staff  13824068 Jul 31 17:46 initial.o
+-rw-r--r--@ 1 liangyu  staff     29848 Jul 30 17:04 integrate.F
+-rw-r--r--  1 liangyu  staff     43592 Jul 31 17:46 integrate.o
+-rw-r--r--@ 1 liangyu  staff     37000 Jul 30 08:33 kpp_coef.F
+-rw-r--r--  1 liangyu  staff     37300 Jul 31 17:46 kpp_coef.o
+-rw-r--r--@ 1 liangyu  staff      8995 Jul 30 08:33 main.F
+-rw-r--r--  1 liangyu  staff     12508 Jul 31 17:46 main.o
+-rw-r--r--@ 1 liangyu  staff      4357 Jul 30 16:50 misc.F
+-rw-r--r--  1 liangyu  staff      4100 Jul 31 17:46 misc.o
+-rw-r--r--@ 1 liangyu  staff      8599 Jul 30 16:32 restart.F
+-rw-r--r--  1 liangyu  staff     22152 Jul 31 17:46 restart.o
+---------------------------------
+calling Makeprep-----------------
+calling Make---------------------
+gfortran -c -o dgtsl.o -I . -I /usr/local/include -c dgtsl.F 
+gfortran     -o pac3 calendar.o control.o dgtsl.o diagnos.o domain.o filter.o force.o histavg.o history.o initial.o integrate.o kpp_coef.o main.o misc.o restart.o   -L /usr/local/lib -L /usr/local/gfortran/lib  -l c -l m -l netcdff 
+---------------------------------
+o contents of /Users/liangyu/pac3.e/tmp/test.01/src
+total 57576
+-rw-r--r--   1 liangyu  staff      4148 Jul 31 17:49 Build.log.200731-174937
+-rwxr-xr-x   1 liangyu  staff  14029188 Jul 31 17:49 pac3*
+drwxr-xr-x  78 liangyu  staff      2496 Jul 31 17:49 ./
+-rw-r--r--   1 liangyu  staff      2108 Jul 31 17:49 dgtsl.o
+-rw-r--r--   1 liangyu  staff       329 Jul 31 17:49 Depends
+-rw-r--r--   1 liangyu  staff       348 Jul 31 17:49 Objects
+-rw-r--r--   1 liangyu  staff         2 Jul 31 17:49 Filepath
+-rw-r--r--   1 liangyu  staff       142 Jul 31 17:49 Source
+drwxr-xr-x  27 liangyu  staff       864 Jul 31 17:49 ../
+-rw-r--r--   1 liangyu  staff     22152 Jul 31 17:46 restart.o
+-rw-r--r--   1 liangyu  staff      4100 Jul 31 17:46 misc.o
+-rw-r--r--   1 liangyu  staff     12508 Jul 31 17:46 main.o
+-rw-r--r--   1 liangyu  staff     37300 Jul 31 17:46 kpp_coef.o
+-rw-r--r--   1 liangyu  staff     43592 Jul 31 17:46 integrate.o
+-rw-r--r--   1 liangyu  staff  13824068 Jul 31 17:46 initial.o
+-rw-r--r--   1 liangyu  staff     20088 Jul 31 17:46 history.o
+-rw-r--r--   1 liangyu  staff     31616 Jul 31 17:46 histavg.o
+-rw-r--r--   1 liangyu  staff     27608 Jul 31 17:46 force.o
+-rw-r--r--   1 liangyu  staff     17904 Jul 31 17:46 filter.o
+-rw-r--r--   1 liangyu  staff     10920 Jul 31 17:46 domain.o
+-rw-r--r--   1 liangyu  staff     18288 Jul 31 17:46 diagnos.o
+-rw-r--r--   1 liangyu  staff     16908 Jul 31 17:46 control.o
+-rw-r--r--   1 liangyu  staff      3632 Jul 31 17:46 calendar.o
+-rw-r--r--   1 liangyu  staff      3240 Jul 31 17:46 dgtsl.F
+-rw-r--r--@  1 liangyu  staff       743 Jul 31 17:29 Macros.liang
+-rw-r--r--   1 liangyu  staff      5195 Jul 31 17:02 Build.log.200731-170242
+-rw-r--r--   1 liangyu  staff      5195 Jul 31 17:00 Build.log.200731-170051
+-rw-r--r--@  1 liangyu  staff      1093 Jul 31 16:38 Makefile
+-rw-r--r--@  1 liangyu  staff     29848 Jul 30 17:04 integrate.F
+-rw-r--r--@  1 liangyu  staff      4357 Jul 30 16:50 misc.F
+-rw-r--r--@  1 liangyu  staff     16574 Jul 30 16:42 history.F
+-rw-r--r--@  1 liangyu  staff     21433 Jul 30 16:42 histavg.F
+-rw-r--r--@  1 liangyu  staff      8599 Jul 30 16:32 restart.F
+-rw-r--r--@  1 liangyu  staff      8995 Jul 30 08:33 main.F
+-rw-r--r--@  1 liangyu  staff     37000 Jul 30 08:33 kpp_coef.F
+-rw-r--r--@  1 liangyu  staff      9355 Jul 30 08:33 initial.F
+-rw-r--r--@  1 liangyu  staff      1252 Jul 30 08:33 histavg.h
+-rw-r--r--@  1 liangyu  staff     18244 Jul 30 08:33 force.F
+-rw-r--r--@  1 liangyu  staff     19178 Jul 30 08:33 filter.F
+-rw-r--r--@  1 liangyu  staff      1309 Jul 30 08:33 domain.h
+-rw-r--r--@  1 liangyu  staff      7246 Jul 30 08:33 domain.F
+-rw-r--r--@  1 liangyu  staff       857 Jul 30 08:33 dims.h
+-rw-r--r--@  1 liangyu  staff     11995 Jul 30 08:33 diagnos.F
+-rw-r--r--@  1 liangyu  staff      3390 Jul 30 08:33 data.h
+-rw-r--r--@  1 liangyu  staff      6279 Jul 30 08:33 control.h
+-rw-r--r--@  1 liangyu  staff     13816 Jul 30 08:33 control.F
+-rw-r--r--@  1 liangyu  staff      2305 Jul 30 08:33 constant.h
+-rw-r--r--@  1 liangyu  staff      7807 Jul 30 08:33 calendar.f
+-rw-r--r--@  1 liangyu  staff       541 Jul 30 08:33 README
+-rwxr-xr-x@  1 liangyu  staff       754 Jul 30 08:33 Makeprep*
+-rwxr-xr-x@  1 liangyu  staff      1185 Jul 30 08:33 Makeobj*
+-rwxr-xr-x@  1 liangyu  staff      4693 Jul 30 08:33 Makedep*
+-rw-r--r--@  1 liangyu  staff       845 Jul 30 08:33 Macros.J90
+-rw-r--r--@  1 liangyu  staff       855 Jul 30 08:33 Macros.C90
+-rw-r--r--   1 liangyu  staff     10313 Jul 28 09:28 Build.log.200728-092854
+-rw-rw-r--@  1 liangyu  staff         0 Jul 28 09:28 restart.i
+-rw-rw-r--@  1 liangyu  staff         0 Jul 28 09:28 misc.i
+-rw-rw-r--@  1 liangyu  staff         0 Jul 28 09:28 main.i
+-rw-rw-r--@  1 liangyu  staff         0 Jul 28 09:28 kpp_coef.i
+-rw-rw-r--@  1 liangyu  staff         0 Jul 28 09:28 integrate.i
+-rw-rw-r--@  1 liangyu  staff         0 Jul 28 09:28 initial.i
+-rw-rw-r--@  1 liangyu  staff         0 Jul 28 09:28 history.i
+-rw-rw-r--@  1 liangyu  staff         0 Jul 28 09:28 histavg.i
+-rw-rw-r--@  1 liangyu  staff         0 Jul 28 09:28 force.i
+-rw-rw-r--@  1 liangyu  staff         0 Jul 28 09:28 filter.i
+-rw-rw-r--@  1 liangyu  staff         0 Jul 28 09:28 domain.i
+-rw-rw-r--@  1 liangyu  staff         0 Jul 28 09:28 diagnos.i
+-rw-rw-r--@  1 liangyu  staff         0 Jul 28 09:28 control.i
+-rw-r--r--   1 liangyu  staff     10245 Jul 28 09:18 Build.log.200728-091833
+-rw-r--r--   1 liangyu  staff      2847 Jul 28 09:15 Build.log.200728-091559
+-rw-r--r--   1 liangyu  staff     10318 Jul 27 17:09 Build.log.200727-170936
+-rw-r--r--   1 liangyu  staff      8872 Jul 26 20:38 Build.log.200726-203800
+-rw-r--r--   1 liangyu  staff      8872 Jul 25 21:26 Build.log.200725-212620
+-rw-r--r--   1 liangyu  staff      8827 Jul 25 21:24 Build.log.200725-212425
+-rw-r--r--   1 liangyu  staff      5074 Jul 25 21:24 Build.log.200725-212419
+-rw-r--r--   1 liangyu  staff      8526 Jul 25 17:41 Build.log.200725-174106
+-rw-r--r--   1 liangyu  staff      2637 Jul 25 17:34 Build.log.200725-173459
+-rw-r--r--   1 liangyu  staff      2565 Jul 25 17:24 Build.log.200725-172402
+---------------------------------
+o revision control info:
+constant.h:c CVS $Id: constant.h,v 1.1.1.1 1997/04/17 23:00:00 kauff Exp $
+constant.h:c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/constant.h,v $
+constant.h:c CVS $Name: pac3_e $
+control.F:c CVS $Id: control.F,v 1.4 1998/08/24 23:12:51 kauff Exp $
+control.F:c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/control.F,v $
+control.F:c CVS $Name: pac3_e $
+control.h:c CVS $Id: control.h,v 1.5 1998/08/27 16:49:08 kauff Exp $
+control.h:c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/control.h,v $
+control.h:c CVS $Name: pac3_e $
+data.h:c CVS $Id: data.h,v 1.1.1.1 1997/04/17 23:00:00 kauff Exp $
+data.h:c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/data.h,v $
+data.h:c CVS $Name: pac3_e $
+diagnos.F:c CVS $Id: diagnos.F,v 1.2 1998/08/24 22:45:46 kauff Exp $
+diagnos.F:c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/diagnos.F,v $
+diagnos.F:c CVS $Name: pac3_e $
+dims.h:c CVS $Id: dims.h,v 1.1.1.1 1997/04/17 23:00:00 kauff Exp $
+dims.h:c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/dims.h,v $
+dims.h:c CVS $Name: pac3_e $
+domain.F:c CVS $Id: domain.F,v 1.2 1998/08/24 22:45:46 kauff Exp $
+domain.F:c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/domain.F,v $
+domain.F:c CVS $Name: pac3_e $
+domain.h:c CVS $Id: domain.h,v 1.1.1.1 1997/04/17 23:00:00 kauff Exp $
+domain.h:c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/domain.h,v $
+domain.h:c CVS $Name: pac3_e $
+filter.F:c CVS $Id: filter.F,v 1.2 1998/08/24 22:45:46 kauff Exp $
+filter.F:c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/filter.F,v $
+filter.F:c CVS $Name: pac3_e $
+force.F:c CVS $Id: force.F,v 1.2 1998/08/24 22:45:46 kauff Exp $
+force.F:c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/force.F,v $
+force.F:c CVS $Name: pac3_e $
+histavg.F:c CVS $Id: histavg.F,v 1.6 1998/08/25 20:46:13 kauff Exp $
+histavg.F:c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/histavg.F,v $
+histavg.F:c CVS $Name: pac3_e $
+histavg.h:c CVS $Id: histavg.h,v 1.1.1.1 1997/04/17 23:00:00 kauff Exp $
+histavg.h:c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/histavg.h,v $
+histavg.h:c CVS $Name: pac3_e $
+history.F:c CVS $Id: history.F,v 1.7 1998/08/27 21:29:03 kauff Exp $
+history.F:c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/history.F,v $
+history.F:c CVS $Name: pac3_e $
+initial.F:c CVS $Id: initial.F,v 1.6 1998/08/25 20:47:29 kauff Exp $
+initial.F:c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/initial.F,v $
+initial.F:c CVS $Name: pac3_e $
+integrate.F:c CVS $Id: integrate.F,v 1.4 1998/08/26 20:46:40 kauff Exp $
+integrate.F:c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/integrate.F,v $
+integrate.F:c CVS $Name: pac3_e $
+kpp_coef.F:c CVS $Id: kpp_coef.F,v 1.3 1999/08/12 17:30:46 kauff Exp $
+kpp_coef.F:c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/kpp_coef.F,v $
+kpp_coef.F:c CVS $Name: pac3_e $
+main.F:c CVS $Id: main.F,v 1.4 1998/08/28 20:46:07 kauff Exp $
+main.F:c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/main.F,v $
+main.F:c CVS $Name: pac3_e $
+main.F:c   CVS revisions circa Aug 1998 by B. Kauffman
+main.F:      write(*,9000) 'CVS ',
+main.F:      write(*,9000) 'CVS ',
+main.F:     &  '$Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/main.F,v $' 
+main.F:      write(*,9000) 'CVS $Name: pac3_e $' 
+misc.F:c CVS $Id: misc.F,v 1.4 1998/08/25 20:46:13 kauff Exp $
+misc.F:c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/misc.F,v $
+misc.F:c CVS $Name: pac3_e $
+restart.F:c CVS $Id: restart.F,v 1.5 1998/08/25 20:47:29 kauff Exp $
+restart.F:c CVS $Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/restart.F,v $
+restart.F:c CVS $Name: pac3_e $

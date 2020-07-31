@@ -1,5 +1,6 @@
 OBJS =  calendar.o     \
         control.o     \
+        dgtsl.o     \
         diagnos.o     \
         domain.o     \
         filter.o     \

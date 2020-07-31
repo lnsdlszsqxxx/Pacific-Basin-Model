@@ -1,0 +1,19 @@
+ &inparm
+  case_name   = 'test.01 '
+  case_desc   = 'test.01 code test '
+  rest_type   = 'initial'
+  rest_pfile  = '/Users/liangyu/pac3.test.01.rpointer '
+  rest_bfile  = '/KAUFF/pac3/data/r0000-01-01'
+  rest_date   = 00000101
+  rest_freq   = 'monthly'
+  stop_option = 'newmonth'
+  hist_freq   = 'monthly'
+  hist_tavg   = 1
+  diag_freq   = 'monthly'
+  mss_dir     =  '/LIANGYU/pac3/test.01'
+  mss_pass    = ',liangyu'
+  mss_rtpd    =   20
+  frc_wfile   = '/KAUFF/pac3/data/wind1.fsu.mnth'
+  frc_cfile   = '/KAUFF/pac3/data/cloud.isccp.mnth'
+  frc_tfile   = '/KAUFF/pac3/data/sst.str.mnth'
+ /

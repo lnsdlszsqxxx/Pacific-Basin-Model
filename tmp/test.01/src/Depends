@@ -1,14 +1,15 @@
 calendar.o : calendar.f 
-control.o : control.F control.h
-diagnos.o : diagnos.F dims.h constant.h control.h domain.h data.h
-domain.o : domain.F dims.h control.h domain.h data.h
-filter.o : filter.F dims.h control.h domain.h data.h
-force.o : force.F dims.h constant.h control.h domain.h data.h
-histavg.o : histavg.F control.h dims.h constant.h domain.h data.h histavg.h
-history.o : history.F control.h dims.h constant.h domain.h data.h
-initial.o : initial.F dims.h constant.h control.h domain.h data.h
-integrate.o : integrate.F dims.h constant.h domain.h data.h control.h
+control.o : control.F 
+dgtsl.o : dgtsl.F 
+diagnos.o : diagnos.F 
+domain.o : domain.F 
+filter.o : filter.F 
+force.o : force.F 
+histavg.o : histavg.F 
+history.o : history.F 
+initial.o : initial.F 
+integrate.o : integrate.F 
 kpp_coef.o : kpp_coef.F 
-main.o : main.F dims.h constant.h control.h domain.h data.h
+main.o : main.F 
 misc.o : misc.F 
-restart.o : restart.F dims.h constant.h control.h domain.h data.h
+restart.o : restart.F 

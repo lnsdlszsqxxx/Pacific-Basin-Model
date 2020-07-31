@@ -11,8 +11,5 @@
 
 ls *.[fF]               >! Source   # list of source code in cwd
 echo '.'                >! Filepath # Makedep's file search path
-echo 'makeobj haha'
 perl Makeobj          Source >! Objects  # Makefile's object code list
-echo 'makedep haha'
 perl Makedep Filepath Source >! Depends  # Makefile's dependency list
-echo 'makeprep done haha'
