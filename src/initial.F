@@ -132,7 +132,7 @@ c-----------------------------------------------------------------------
       !-----------------------------------------------------------------
       ! read input parms from stdin
       !-----------------------------------------------------------------
-      write(*,9000)   'reading parameters from input namelist.'
+      write(*,9000)   'reading parameters from input namelist: ocn.parm'
       read (*,nml=inparm)
 
       !--- MS dir name needs trailing slash ---

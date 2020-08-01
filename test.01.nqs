@@ -26,11 +26,11 @@ set MSSNAME = `echo $LOGNAME | tr '[a-z]' '[A-Z]'`
 setenv CASE     test.01                # case name
 setenv CASESTR  'code test'            # short descriptive text string
 setenv RUNTYPE  initial                # run type
-setenv ARCH     C90                    # machine: C90,J90,SGI,O2K,SX4
-setenv MSS      TRUE                   # MSS is available?
-setenv MSSDIR   /$MSSNAME/pac3/$CASE   # MSS directory path name
-setenv MSSRPD   20                     # MSS file retention period
-setenv MSSPWD   $LOGNAME               # MSS file password
+setenv ARCH     liang                  # machine: liang's MacPro
+setenv MSS      FALSE                  # MSS is available?
+setenv MSSDIR   /I/dont/need/it        # MSS directory path name
+setenv MSSRPD   /I/dont/need/it        # MSS file retention period
+setenv MSSPWD   /I/dont/need/it        # MSS file password
 setenv RPTDIR   $HOME                  # where restart pointer file goes
 setenv LD_OPTIONS '-m'
 
@@ -56,22 +56,26 @@ cp $CASE.nqs $NQSDIR #liang, for resubmit
 
 cd $EXEDIR
 echo "Date: `date`"     >&! pac3.log.$LID
-$NQSDIR/pac3.setup.csh  >>! pac3.log.$LID #invoke pac3.setup.csh
+$NQSDIR/pac3.setup.csh  >>! pac3.log.$LID #invoke pac3.setup.csh 
+                                          #to build a.out
+                                          #save output in pac3.log
 
 if ($status != 0) then
-  echo  Setup script error, see:    ./tmp/$CASE/pac3.log.$LID
+  echo  Setup script error, see:    $EXEDIR/pac3.log.$LID
   exit  99
 endif
 
 echo '-----------------------------------------------------------------'
-echo ' (e) Execute model                                               '
+echo '(e)Execute model                                                 '
+echo "ocn is the executable, which is linked to $EXEDIR/src/a.out      "
 echo '-----------------------------------------------------------------'
 
 cd  $EXEDIR 
 date
-if ($ARCH == 'C90' || $ARCH == 'J90') ja        $TMPDIR/jacct
-ocn < ocn.parm >>&  pac3.log.$LID
-if ($ARCH == 'C90' || $ARCH == 'J90') ja -ts    $TMPDIR/jacct
+#if ($ARCH == 'C90' || $ARCH == 'J90') ja        $TMPDIR/jacct
+#The ja command is a UNICOS job accounting utility which provides data on CPU time used, memory used, etc. I don't need it. liang
+./ocn < ocn.parm >>&  pac3.log.$LID  #ocn -> ./ocn
+#if ($ARCH == 'C90' || $ARCH == 'J90') ja -ts    $TMPDIR/jacct
 
 echo '-----------------------------------------------------------------'
 echo ' (f) save model output (stdout & stderr) to $LOGDIR              '

@@ -1,4 +1,4 @@
-calendar.o : calendar.f 
+calendar.o : calendar.F 
 control.o : control.F 
 dgtsl.o : dgtsl.F 
 diagnos.o : diagnos.F 

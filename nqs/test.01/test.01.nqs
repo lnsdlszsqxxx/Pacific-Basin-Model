@@ -56,22 +56,26 @@ cp $CASE.nqs $NQSDIR #liang, for resubmit
 
 cd $EXEDIR
 echo "Date: `date`"     >&! pac3.log.$LID
-$NQSDIR/pac3.setup.csh  >>! pac3.log.$LID #invoke pac3.setup.csh
+$NQSDIR/pac3.setup.csh  >>! pac3.log.$LID #invoke pac3.setup.csh 
+                                          #to build a.out
+                                          #save output in pac3.log
 
 if ($status != 0) then
-  echo  Setup script error, see:    ./tmp/$CASE/pac3.log.$LID
+  echo  Setup script error, see:    $EXEDIR/pac3.log.$LID
   exit  99
 endif
 
 echo '-----------------------------------------------------------------'
-echo ' (e) Execute model                                               '
+echo '(e)Execute model                                                 '
+echo "ocn is the executable, which is linked to $EXEDIR/src/a.out      "
 echo '-----------------------------------------------------------------'
 
 cd  $EXEDIR 
 date
-if ($ARCH == 'C90' || $ARCH == 'J90') ja        $TMPDIR/jacct
-ocn < ocn.parm >>&  pac3.log.$LID
-if ($ARCH == 'C90' || $ARCH == 'J90') ja -ts    $TMPDIR/jacct
+#if ($ARCH == 'C90' || $ARCH == 'J90') ja        $TMPDIR/jacct
+#The ja command is a UNICOS job accounting utility which provides data on CPU time used, memory used, etc. I don't need it. liang
+./ocn < ocn.parm >>&  pac3.log.$LID  #ocn -> ./ocn
+#if ($ARCH == 'C90' || $ARCH == 'J90') ja -ts    $TMPDIR/jacct
 
 echo '-----------------------------------------------------------------'
 echo ' (f) save model output (stdout & stderr) to $LOGDIR              '

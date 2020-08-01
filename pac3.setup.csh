@@ -15,7 +15,7 @@ echo '================================================================='
 echo '-----------------------------------------------------------------'
 echo ' (a) Build an executable                                         '
 echo '-----------------------------------------------------------------'
-#rm -f ocn
+rm -f ocn #ocn is the executable, which is linked to src/a.out.  liang
 if ( -e ocn) then
   echo 'Note: using an existing binary'
   ls -lFt ocn src/Build.log.* | head
@@ -41,7 +41,7 @@ else
     echo '---------------------------------' >>& $BLDLOG
     echo "o gathering src code from $SRCDIR" >>& $BLDLOG
 #liang, that's why I moved all source files in ./src
-    cat $SRCDIR/README                       >>& $BLDLOG
+#    cat $SRCDIR/README                       >>& $BLDLOG
     ls -lF $SRCDIR                           >>& $BLDLOG
     cp -fp $SRCDIR/* .                       >>& $BLDLOG
   end
@@ -51,27 +51,30 @@ else
   echo 'calling Makeprep-----------------' >>& $BLDLOG
   csh -f Makeprep                          >>& $BLDLOG #liang ,add "csh -f"
   echo 'calling Make---------------------' >>& $BLDLOG
-  make EXEC=pac3 ARCH=$ARCH                >>& $BLDLOG || exit 2
+  make ARCH=$ARCH                          >>& $BLDLOG || exit 2
 
   #--- document the source code used ---
   echo '---------------------------------' >>& $BLDLOG
   echo "o contents of `pwd`"               >>& $BLDLOG
+  echo "o there should be an a.out file"   >>& $BLDLOG
   ls -alFt                                 >>& $BLDLOG
-  echo '---------------------------------' >>& $BLDLOG
-  echo "o revision control info:"          >>& $BLDLOG
-  grep 'CVS' *.[hF]                        >>& $BLDLOG
+#  echo '---------------------------------' >>& $BLDLOG
+#  echo "o revision control info:"          >>& $BLDLOG
+#  grep 'CVS' *.[hF]                        >>& $BLDLOG
+  echo 'building done--------------------' >>& $BLDLOG
 
   #--- link binary into ./ directory ---
   cd ..
-  rm -f ocn ; ln -s  src/pac3 ocn
+  rm -f ocn ; ln -s  ./src/a.out ocn
 endif
 
 echo ' '
 echo '-----------------------------------------------------------------'
 echo ' (b) document the source code used                               '
 echo '-----------------------------------------------------------------'
-echo "o contents of /src:"      ; ls -alFt   src        ; echo ' '
-echo "o revision control info:" ; grep 'CVS' src/*.[hF] ; echo ' '
+echo 'skipped, uncomment is necessary'
+#echo "o contents of /src:"      ; ls -alFt   src        ; echo ' '
+#echo "o revision control info:" ; grep 'CVS' src/*.[hF] ; echo ' '
 
 echo ' '
 echo '-----------------------------------------------------------------'
@@ -100,8 +103,8 @@ cat >! ocn.parm  << EOF
 EOF
 
 echo "o contents of ocn.parm:" ; cat ocn.parm ; echo ' '
-echo "o contents of `pwd`:"    ; ls -alF      ; echo ' '
+#echo "o contents of `pwd`:"    ; ls -alF      ; echo ' '
 
 echo '================================================================='
-echo ' end of setup shell script                                       '
+echo ' end of setup shell script (pac3.setup.csh finished)             '
 echo '================================================================='
