@@ -26,11 +26,11 @@ set MSSNAME = `echo $LOGNAME | tr '[a-z]' '[A-Z]'`
 setenv CASE     test.01                # case name
 setenv CASESTR  'code test'            # short descriptive text string
 setenv RUNTYPE  initial                # run type
-setenv ARCH     C90                    # machine: C90,J90,SGI,O2K,SX4
-setenv MSS      TRUE                   # MSS is available?
-setenv MSSDIR   /$MSSNAME/pac3/$CASE   # MSS directory path name
-setenv MSSRPD   20                     # MSS file retention period
-setenv MSSPWD   $LOGNAME               # MSS file password
+setenv ARCH     liang                  # machine: liang's MacPro
+setenv MSS      FALSE                  # MSS is available?
+setenv MSSDIR   /I/dont/need/it        # MSS directory path name
+setenv MSSRPD   /I/dont/need/it        # MSS file retention period
+setenv MSSPWD   /I/dont/need/it        # MSS file password
 setenv RPTDIR   $HOME                  # where restart pointer file goes
 setenv LD_OPTIONS '-m'
 

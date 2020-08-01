@@ -10,9 +10,9 @@
   hist_freq   = 'monthly'
   hist_tavg   = 1
   diag_freq   = 'monthly'
-  mss_dir     =  '/LIANGYU/pac3/test.01'
-  mss_pass    = ',liangyu'
-  mss_rtpd    =   20
+  mss_dir     =  '/I/dont/need/it'
+  mss_pass    = ',/I/dont/need/it'
+  mss_rtpd    =   /I/dont/need/it
   frc_wfile   = '/KAUFF/pac3/data/wind1.fsu.mnth'
   frc_cfile   = '/KAUFF/pac3/data/cloud.isccp.mnth'
   frc_tfile   = '/KAUFF/pac3/data/sst.str.mnth'
