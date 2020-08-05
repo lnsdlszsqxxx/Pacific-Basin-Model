@@ -37,8 +37,8 @@ c=======================================================================
       subroutine datetime(cdate,ctime)
 
       !--- arguments ---
-      character*8 cdate       ! Output:  Current date
-      character*8 ctime       ! Output:  Current time
+      character*8 cdate       ! Output:  Current date, yyyymmdd
+      character*8 ctime       ! Output:  Current time, hhmmss(ms)
 
       !--- local ---
       integer mon,day,yr      ! calendar date
@@ -54,9 +54,10 @@ c-----------------------------------------------------------------------
                                                    !temptime is
                                                    !hhmmss.ms
       ctime(1:6)=temptime(1:6) !hhmmss
-      ctime(7:8)=temptime(8:9) !millisecond
+      ctime(7:8)=temptime(8:9) !last two digits are millisecond
 
-      write(*,*) "(datetime) ", cdate,", ",ctime
+!      write(*,*) "(datetime) ", cdate,", ",ctime
+ 
       return
       end
 
@@ -107,12 +108,13 @@ c=======================================================================
       integer       ier
       character*(*) loc_fn
       character*(*) mss_fn
-      character*(*) mss_pass
-      integer       mss_rtpd
-      character*(*) mss_opts
+      character*(*) mss_pass !no use
+      integer       mss_rtpd !no use
+      character*(*) mss_opts !no use
 
 c-----------------------------------------------------------------------
 c PURPOSE: a stand-in for NCAR's MSS routine
+! cp local file to storage directory
 c-----------------------------------------------------------------------
 
       ier=0
@@ -131,11 +133,12 @@ c=======================================================================
       integer       ier
       character*(*) loc_fn
       character*(*) mss_fn
-      character*(*) mss_pass
-      character*(*) mss_opts
+      character*(*) mss_pass !no use
+      character*(*) mss_opts !no use
 
 c-----------------------------------------------------------------------
 c PURPOSE: a stand-in for NCAR's MSS routine
+! cp file from storage directory to current location
 c-----------------------------------------------------------------------
 
       ier=0

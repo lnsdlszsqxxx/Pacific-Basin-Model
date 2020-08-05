@@ -107,9 +107,9 @@ c=======================================================================
       integer       ier
       character*(*) loc_fn
       character*(*) mss_fn
-      character*(*) mss_pass
-      integer       mss_rtpd
-      character*(*) mss_opts
+      character*(*) mss_pass !no use
+      integer       mss_rtpd !no use
+      character*(*) mss_opts !no use
 
 c-----------------------------------------------------------------------
 c PURPOSE: a stand-in for NCAR's MSS routine

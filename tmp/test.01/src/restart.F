@@ -106,6 +106,7 @@ c-----------------------------------------------------------------------
          i      = LstIndex(mss_fn,'/')+1
          j      =    index(mss_fn,' ')
          loc_fn = mss_fn(i:j)//' '
+         write(*,*) 'loc_fn = ',i,j,loc_fn
          pass   = ' '
          opts   = ' '
          call MSread(ier, loc_fn , mss_fn, pass, opts)

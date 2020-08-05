@@ -72,7 +72,7 @@ echo ' '
 echo '-----------------------------------------------------------------'
 echo ' (b) document the source code used                               '
 echo '-----------------------------------------------------------------'
-echo 'skipped, uncomment is necessary'
+echo 'skipped, uncomment if necessary'
 #echo "o contents of /src:"      ; ls -alFt   src        ; echo ' '
 #echo "o revision control info:" ; grep 'CVS' src/*.[hF] ; echo ' '
 

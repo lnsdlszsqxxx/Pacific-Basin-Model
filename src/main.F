@@ -67,19 +67,23 @@ c-----------------------------------------------------------------------
       write(*,9002)
       call datetime(dstr,tstr)
       write(*,9000)'Executing CSM Pacific Basin Model -- ',dstr,' ',tstr
-      write(*, *  )
-      write(*,9999) ! copyright notice
+!      write(*, *  )
+!      write(*,9999) ! copyright notice
       write(*,9002)
-      write(*,9000) 'CVS ',
-     &  '$Id: main.F,v 1.4 1998/08/28 20:46:07 kauff Exp $' 
-      write(*,9000) 'CVS ',
-     &  '$Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/main.F,v $' 
-      write(*,9000) 'CVS $Name: pac3_e $' 
-      write(*,9002)
+!      write(*,9000) 'CVS ',
+!     &  '$Id: main.F,v 1.4 1998/08/28 20:46:07 kauff Exp $' 
+!      write(*,9000) 'CVS ',
+!     &  '$Source: /fs/cgd/home0/kauff/pac/CVS.REPOS/pac3/main.F,v $' 
+!      write(*,9000) 'CVS $Name: pac3_e $' 
+!      write(*,9002)
 
       !-----------------------------------------------------------------
       ! initialization
       !-----------------------------------------------------------------
+      write(*, *  )
+      write(*,9002)
+      write(*,*) 'initialization'
+      write(*,9002)
       call initial1
       call restart('read')
       call initial2
@@ -92,6 +96,11 @@ c-----------------------------------------------------------------------
 
       !--- initialize control flags ---
       call control
+
+      write(*, *  )
+      write(*,9002)
+      write(*,*) 'initialization done'
+      write(*,9002)
 
       !-----------------------------------------------------------------
       !              start of MAIN INTEGRATION LOOP
