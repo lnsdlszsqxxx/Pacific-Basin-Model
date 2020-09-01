@@ -12,6 +12,17 @@
 - download a source file named [dgtsl.F](http://www.netlib.no/netlib/linpack/dgtsl.f), which solves a tridiagonal linear system and is invoked by integrate.F. Put it together with other source code files.
 - [netCDF-C library](https://www.unidata.ucar.edu/downloads/netcdf/)
 - [netCDF-Fortran library](https://www.unidata.ucar.edu/downloads/netcdf/)
+- [NCL](http://www.ncl.ucar.edu/Download/)
+  - I use NCL to prepare forcing data, you don't have to use NCL
+  - I used conda
+  - At the end of _.bash_profile_, add
+  ```
+  export NCARG_ROOT=~/opt/miniconda3/envs/ncl_stable
+  export PATH=$NCARG_ROOT/bin:$PATH
+  source activate ncl_stable
+  cd ~
+  export PS1="\[\e[36m\][Mac:\w]$\[\e[m\]"
+  ```
 
 The two netCDF libraries are used for accessing the nc format files through fortran. Install netCDF-C library first. The model needs a head file named netcdf.inc, which can be found after the netCDF-Fortran library has been installed.
 
